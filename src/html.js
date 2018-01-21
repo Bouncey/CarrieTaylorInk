@@ -5,13 +5,12 @@ import Helmet from 'react-helmet';
 // import preloads from './head/preloads';
 // import metaAndStyleSheets from './head';
 
-
 export default class HTML extends React.Component {
   static propTypes = {
     body: PropTypes.string,
     headComponents: PropTypes.array,
     postBodyComponents: PropTypes.array
-  }
+  };
 
   render() {
     const head = Helmet.rewind();
@@ -28,23 +27,23 @@ export default class HTML extends React.Component {
     }
 
     return (
-      <html lang='en'>
+      <html lang="en">
         <head>
           {/* { preloads } */}
-          { this.props.headComponents }
+          {this.props.headComponents}
           {/* { metaAndStyleSheets } */}
-          { css }
+          {css}
           <title>Carrie Taylor Ink</title>
           <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
         </head>
         <body>
           <div
             dangerouslySetInnerHTML={{ __html: this.props.body }}
-            id='___gatsby'
+            id="___gatsby"
           />
-          { this.props.postBodyComponents }
-          <script dangerouslySetInnerHTML={
-            {
+          {this.props.postBodyComponents}
+          <script
+            dangerouslySetInnerHTML={{
               __html: `
                 if (window.netlifyIdentity) {
                   window.netlifyIdentity.on("init", user => {
@@ -55,8 +54,8 @@ export default class HTML extends React.Component {
                     }
                   });
                 }
-            `}
-          }
+            `
+            }}
           />
         </body>
       </html>
